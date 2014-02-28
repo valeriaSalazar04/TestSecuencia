@@ -22,8 +22,9 @@ public class MatrizEnteros {
     public MatrizEnteros(int filas , int columnas) throws ExceptionUFPS {
        this. matriz= new Secuencia<>(filas);
        if (columnas==0){
-           
+            System.out.println(" entre a dispersa");
            crearElementosDispersos();
+           
        }
        else{
           crearElementos(columnas);
@@ -34,11 +35,19 @@ public class MatrizEnteros {
     
     private void crearElementosDispersos() throws ExceptionUFPS
     {
+         System.out.println(" entre a crear elementos");
         String msg="";
         for (int i=0;i<matriz.getLength();i++){
-            int r=(int)(Math.random()*+1);
+            int r=(int)(Math.random()*+10);
+          
             msg=crearElementosVector(r);
-            matriz.set(i, new VectorUFPS(msg));
+             System.out.println(msg);
+          
+             
+             matriz.set(i, new VectorUFPS(msg));
+             
+             
+             System.out.println("listo");
         }
       
     }
@@ -48,11 +57,13 @@ public class MatrizEnteros {
     private void crearElementos(int columnas)throws ExceptionUFPS
     {
        String msg="";
-      
+      System.out.println(" entre a crear elementos");
         for (int i=0; i<matriz.getLength();i++){
             
             msg=crearElementosVector(columnas);
-            matriz.set(i, new VectorUFPS(msg));
+           VectorUFPS j=new VectorUFPS(msg);
+            
+            matriz.set(i, j);
         }
             
         
@@ -66,9 +77,10 @@ public class MatrizEnteros {
         String msg="";
         for (int i=0;i<columnas;i++){
             int r=(int)(Math.random()*10);
-            msg+=r+";";
+            msg+=r+",";
             
         }
+        System.out.println(msg);
         return msg;
         
     }
@@ -81,7 +93,7 @@ public class MatrizEnteros {
     String msg="";
     for (int i=0;i<matriz.getLength();i++){
      
-         msg+= matriz.get(i).vector.toString();
+         msg+= matriz.get(i).toString();
            
      }
     
@@ -148,6 +160,4 @@ public class MatrizEnteros {
         return false;
     }
     
-    
-
 }
